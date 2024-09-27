@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext", 
+    "moduleResolution": "NodeNext", // 
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "app/*": ["*"],
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "pages/*": ["src/pages/*"],
+      "assets/*": ["src/assets/*"],
+      "boot/*": ["src/boot/*"],
+      "stores/*": ["src/stores/*"],
+      "hooks/*": ["src/hooks/*"]
+    },
+    "target": "es2019",
+    "lib": ["es2019", "dom"]
+  }
+}
