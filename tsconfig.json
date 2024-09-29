@@ -4,6 +4,9 @@
     "moduleResolution": "NodeNext", // 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "types": [
+      "vue-sweetalert2"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
