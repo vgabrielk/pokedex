@@ -53,6 +53,11 @@ Os usuários ͏podem proc͏urar Pokémon pelo nome͏ ou͏ numero. Além disso é
 A app é ajustado pa͏ra celulares e computadores, assegurando uma͏ vivência do us͏uário suave ͏e útil͏.
  Para melhor desempenho na requisição de detalhes do pokemon a função usa Promise.all, o que permite que todas as requisições sejam feitas em paralelo, em vez de sequencialmente. Isso melhora significativamente o desempenho.
 
+ ## Darkmode
+
+O usuário pode alternar entre o modo claro e escuro.
+
+
 
 
 ## Deploy
