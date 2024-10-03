@@ -1,0 +1,56 @@
+.btn-default {
+    @apply bg-default text-white p-2 ;
+}
+.bg-default {
+    @apply bg-[#0079FD]
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.text-secondary {
+  @apply text-[#0079FD];
+}
+
+.border-default {
+  @apply border-[#0079FD]
+}
+.bg-light {
+  @apply bg-white;
+}
+.bg-dark {
+  @apply bg-[#111827]
+
+}
+.text-dark {
+  @apply text-white
+}
+
+.text-light {
+  @apply text-black
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+ @apply bg-default rounded-md ;
+ border: 3px solid #f1f1f1; 
+
+}
+
+input {
+  @apply outline-none border p-2 ;
+}
+select {
+  @apply outline-none border p-2 ;
+}
+option {
+  @apply  text-white
+}
+input::placeholder{
+  @apply text-white
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  @apply bg-blue-400
+}

@@ -1,6 +1,9 @@
 <template>
     <button class="ml-4 text-white" @click="goBack">
-        <icon-component name="arrow-left" extension="svg" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>    </button>
+    <button class="ml-4 text-white" @click="toggleFavorite">
+        <svg v-if="isFavorite" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <svg v-else="isFavorite" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
     </button>
     <div class="flex flex-col md:flex-row p-4 bg-white">
         <div class="flex flex-col md:flex-row ">
@@ -22,16 +25,15 @@
         <div class="w-full">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                 <div class="list-disc list-inside col-span-1 md:col-span-6 shadow-md p-4">
-                    <div class="flex gap-4">
-                        <icon-component name="stats" extension="svg" />
-                        <h2 class="capitalize text-[20px] font-bold text-[#424242]">Base stats</h2>
+                    <div class="flex gap-4 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 9.5H3M21 4.5H3M21 14.5H3M17 19.5H3"/></svg>                        <h2 class="capitalize text-[20px] font-bold text-[#424242]">Base stats</h2>
                     </div>
                     <div v-if="pokemon?.stats && pokemon.stats.length > 0">
                         <div v-for="(stat, index) in pokemon.stats" :key="index" class="mb-2">
                             <div class="flex items-center justify-between">
                                 <span class="uppercase">{{ stat.stat.name }}</span>
                             </div>
-                            <div class="relative w-full h-8 bg-gray-200 rounded">
+                            <div class="relative w-full h-8  rounded">
                                 <div :class="getStatColor(stat.stat.name)"
                                     :style="{ width: `${Math.min(stat.base_stat, 100)}%` }"
                                     class="h-full rounded d-flex text-start px-4 py-1 text-white font-semibold">
@@ -41,10 +43,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-1 md:col-span-6 shadow-md p-4">
-                    <div class="flex gap-4">
-                        <icon-component name="types" extension="svg" />
-                        <h2 class="capitalize text-[20px] font-bold text-[#424242]">Types</h2>
+                <div class="col-span-1 md:col-span-6 shadow-md p-4 bg-white">
+                    <div class="flex gap-4 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM21 9H3M21 15H3M12 3v18"/></svg>                        <h2 class="capitalize text-[20px] font-bold text-[#424242]">Types</h2>
                     </div>
                     <div class="flex space-x-2 mx-auto">
                         <span v-for="(type, index) in pokemon?.types" :key="index"
@@ -55,14 +56,14 @@
                     </div>
                 </div>
 
-                <div class="col-span-1 md:col-span-6 shadow-md p-4">
+                <div class="col-span-1 md:col-span-6 shadow-md p-4 bg-white">
                     <div class="flex gap-4">
-                        <icon-component name="evolutions" extension="svg" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
                         <h2 class="capitalize text-[20px] font-bold text-[#424242]">Evolutions</h2>
                     </div>
                     <div v-if="evolutionChain.length > 0" class="grid grid-cols-1 md:grid-cols-6 gap-4 flex-wrap">
                         <div v-for="(evolution, index) in evolutionChain" :key="index"
-                            class="flex flex-col items-center shadow-md p-4 col-span-12 md:col-span-6">
+                            class="flex flex-col items-center shadow-md p-4 col-span-12 md:col-span-6 bg-white">
                             <img :src="getEvolutionImage(evolution)" alt="Pokemon Evolution" class="w-20 h-20" />
                             <p class="capitalize">{{ evolution.name }}</p>
                         </div>
@@ -81,18 +82,20 @@ import { api, pokeApiUrl } from '@/services/api';
 import { PokemonRequestDetail } from '@/types/pokemon-request-types';
 import { getStatColor } from '@/utils/pokemon-get-stat-color';
 import { getPokemonTypeImage } from '@/utils/pokemon-get-type-image';
-
-import IconComponent from '@/components/icons/IconComponent.vue';
 import { notify } from '@kyvg/vue3-notification';
+import { getEvolutionImage } from '@/utils/pokemon-get-evolution-image';
 
 const pokemon = ref<PokemonRequestDetail | null>(null);
 const evolutionChain = ref<{ name: string; id: number }[]>([]);
+const isFavorite = ref(false); 
 
 const route = useRoute();
 const router = useRouter();
 
 const goBack = () => {
-    router.back();
+    router.push({
+        name:'Home'
+    });
 };
 
 const getPokemon = async () => {
@@ -100,6 +103,7 @@ const getPokemon = async () => {
         const response = await api.get(`${pokeApiUrl}pokemon/${route.params.id}`);
         pokemon.value = response.data;
         getEvolutionChain();
+        checkIfFavorite();
     } catch (error) {
         if (error.status == 404) {
             router.push({
@@ -158,8 +162,31 @@ const extractPokemonId = (url: string): number => {
     return parseInt(parts[parts.length - 1], 10);
 };
 
-const getEvolutionImage = (evolution: { name: string; id: number }): string => {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evolution.id}.png`;
+
+
+const checkIfFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    if (pokemon.value) {
+        isFavorite.value = favorites.some((fav: PokemonRequestDetail) => fav.id === pokemon.value!.id);
+    }
+};
+
+const toggleFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    if (pokemon.value) {
+        const index = favorites.findIndex((fav: PokemonRequestDetail) => fav.id === pokemon.value!.id);
+
+        if (index > -1) {
+            favorites.splice(index, 1);
+        } else {
+            favorites.push(pokemon.value);
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+
+        isFavorite.value = !isFavorite.value;
+    }
 };
 
 
@@ -167,7 +194,7 @@ watch(
     () => route.params.id,
     (newId) => {
         if (newId) {
-            getPokemon(); // Carregar Pokémon se o ID mudar
+            getPokemon(); 
         }
     },
     { immediate: true }

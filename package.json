@@ -9,14 +9,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-vue": "^2.2.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "@kyvg/vue3-notification": "^3.3.0",
     "axios": "^1.7.7",
     "jquery": "3.6.0",
+    "oh-vue-icons": "^1.0.0-rc3",
     "owl.carousel": "^2.3.4",
+    "pinia": "^2.2.3",
     "swiper": "^11.1.14",
     "vue": "^3.4.37",
     "vue-marquee-slider": "^1.0.6",
     "vue-router": "^4.4.5",
+    "vue-select": "^3.20.3",
     "vue-swal": "^1.0.0",
     "vue-sweetalert2": "^5.0.11"
   },
