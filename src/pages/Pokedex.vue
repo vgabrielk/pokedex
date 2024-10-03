@@ -45,7 +45,7 @@ import axios from 'axios';
 import PaginationComponent from '@/components/pagination/PaginationComponent.vue';
 import LoadingComponent from '@/components/loading/LoadingComponent.vue';
 import router from '@/router/routes';
-import { computed, onMounted, ref, toRefs, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref, toRefs, watch } from 'vue';
 import { pokeApiUrl } from '@/services/api';
 import { PokemonRequestDetail, PokemonRequestListResult } from '@/types/pokemon-request-types';
 import { getPokemonTypeImage } from '@/utils/pokemon-get-type-image';
@@ -146,6 +146,10 @@ watch([() => filterStore.filterQuery, () => filterStore.selectedTypes], async ()
 });
 
 onMounted(fetchPokemons);
+
+onUnmounted(() => {
+  filterStore.clearFilters();
+})
 </script>
 
 <style scoped></style>
