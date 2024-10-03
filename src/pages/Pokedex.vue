@@ -3,10 +3,12 @@
     <div v-if="isLoading">
       <loading-component/>
     </div>
-    <div v-else-if="filterNotResults && filteredPokemons.length === 0">
-      <p>
-        Nenhum resultado encontrado
-      </p>
+    <div v-if="filterNotResults && !isLoading">
+      <div class="flex items-center justify-center relative flex-col h-[80vh]">
+        <img src="/images/poke-ball.png" alt="Not found" class=" w-[40px]"/>
+        <h3 :class="currentTheme.text">No Pokémon found with the given filter.</h3>
+
+      </div>
     </div>
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
       <div v-for="pokemon in filteredPokemons" :key="pokemon.id" @click="() => redirectToPokemonDetails(pokemon.id)" :class="[
@@ -60,8 +62,11 @@ const pokemons = ref<PokemonRequestDetail[]>([]);
 const MAX_LIMIT = 1302; 
 const DEFAULT_LIMIT = 20; 
 const isLoading = ref(false); 
-const filterNotResults = ref(false);
 
+
+const filterNotResults = computed(() => {
+  return filteredPokemons.value.length === 0;
+});
 const paginationLimit = computed(() => {
   return useFilterStore().paginationLimit;
 });
@@ -103,7 +108,6 @@ const fetchPokemons = async (): Promise<void> => {
     pokemons.value = pokemonDetails;
 
     totalPages.value = Math.ceil(pokemonDetails.length / paginationLimit.value);
-    filterNotResults.value = pokemonDetails.length === 0; 
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || error.message || 'Erro ao carregar dados da API';
     notify({ type: 'error', text: errorMessage });
@@ -135,7 +139,6 @@ watch([() => filterStore.filterQuery, () => filterStore.selectedTypes], async ()
 
     totalPages.value = Math.ceil(filteredPokemons.value.length / paginationLimit.value);
     currentPage.value = 1; 
-    filterNotResults.value = pokemonDetails.length === 0; 
   } else {
     fetchPokemons();
   }
