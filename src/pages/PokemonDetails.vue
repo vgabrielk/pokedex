@@ -31,14 +31,13 @@
                     </div>
                     <div v-if="pokemon?.stats && pokemon.stats.length > 0">
                         <div v-for="(stat, index) in pokemon.stats" :key="index" class="mb-2">
-                            <div class="flex items-center justify-between">
-                                <span :class="currentTheme.text" class="uppercase">{{ stat.stat.name }}</span>
-                            </div>
                             <div class="relative w-full h-8  rounded">
                                 <div :class="[getStatColor(stat.stat.name), currentTheme.text]"
                                     :style="{ width: `${Math.min(stat.base_stat, 100)}%` }"
                                     class="h-full rounded d-flex text-start px-4 py-1 font-semibold">
-                                    {{ stat.base_stat }}%
+                                    <p class="text-white uppercase">
+                                        {{ stat.stat.name }} {{ stat.base_stat }}%
+                                    </p>
                                 </div>
                             </div>
                         </div>
