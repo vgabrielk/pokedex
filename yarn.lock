@@ -995,6 +995,13 @@ object-hash@^3.0.0:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"
   integrity sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==
 
+p-limit@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-6.1.0.tgz#d91f9364d3fdff89b0a45c70d04ad4e0df30a0e8"
+  integrity sha512-H0jc0q1vOzlEk0TqAKXKZxdl7kX3OFUzCnNVUnq5Pc3DGo0kpeaMuPqxQn235HibwBEb0/pm9dgKTjXy66fBkg==
+  dependencies:
+    yocto-queue "^1.1.1"
+
 package-json-from-dist@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz#4f1471a010827a86f94cfd9b0727e36d267de505"
@@ -1431,3 +1438,8 @@ yaml@^2.3.4:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.5.1.tgz#c9772aacf62cb7494a95b0c4f1fb065b563db130"
   integrity sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==
+
+yocto-queue@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.1.1.tgz#fef65ce3ac9f8a32ceac5a634f74e17e5b232110"
+  integrity sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==
