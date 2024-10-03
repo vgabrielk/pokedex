@@ -3,15 +3,15 @@
       class="p-4"
     >   
       <button
-      class="btn-default rounded-tl-md rounded-bl-md border-r-[#e6e6e627] border-r"
-      @click="goToNext"
+      class="btn-default rounded-tl-md rounded-bl-md border-r-[#e6e6e627] border-r cursor-pointer"
+      @click="goToPrevious"
         :disabled="currentPage === totalPages"
       >
         Prev
       </button>
       <button
-        class="btn-default rounded-tr-md rounded-br-md"
-        @click="goToPrevious"
+        class="btn-default rounded-tr-md rounded-br-md cursor-pointer"
+        @click="goToNext"
         :disabled="currentPage === 1"
       >
         Next

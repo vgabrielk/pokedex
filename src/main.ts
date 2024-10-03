@@ -10,7 +10,7 @@ import './index.css';
 import './css/globals.css';
 import DashboardLayout from './layouts/dashboard/DashboardLayout.vue';
 import EmptyLayout from './layouts/empty/EmptyLayout.vue';
-import vSelect from 'vue-select'
+import Multiselect from 'vue-multiselect';
 import 'vue-select/dist/vue-select.css';
 import './assets/tailwind.css';
 
@@ -22,7 +22,7 @@ const pinia = createPinia();
 app.component('DefaultLayout', DashboardLayout)
 app.component('EmptyLayout', EmptyLayout)
 app.component("v-icon", OhVueIcon);
-app.component('v-select', vSelect)
+app.component('multi-select', Multiselect)
 
 app.use(router);
 app.use(Notifications)

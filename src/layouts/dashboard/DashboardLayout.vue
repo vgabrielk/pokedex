@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import HeaderLayout from '../header/HeaderLayout.vue';
 import SidebarLayout from '../sidebar/SidebarLayout.vue';
+import { toRefs } from 'vue';
+import { useDarkMode } from '@/stores/darkModeStore';
+const {currentTheme} = toRefs(useDarkMode());
 
 </script>
 
 <template>
-  <div class="flex h-screen font-roboto">
+  <div :class="currentTheme.bg" class="flex h-screen font-roboto">
     <sidebar-layout />
 
     <div class="flex-1 flex flex-col overflow-hidden">
