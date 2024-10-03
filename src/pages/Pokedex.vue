@@ -98,10 +98,11 @@ const fetchPokemons = async (): Promise<void> => {
   try {
     const response = await axios.get(`${pokeApiUrl}/pokemon?limit=${DEFAULT_LIMIT}&offset=${(currentPage.value - 1) * DEFAULT_LIMIT}`);
     const pokemonList = response.data.results;
+    
     const pokemonDetails = await fetchPokemonDetails(pokemonList);
     pokemons.value = pokemonDetails;
 
-    totalPages.value = Math.ceil(pokemons.value.length / paginationLimit.value);
+    totalPages.value = Math.ceil(pokemonDetails.length / paginationLimit.value);
     filterNotResults.value = pokemonDetails.length === 0; 
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || error.message || 'Erro ao carregar dados da API';
@@ -112,23 +113,10 @@ const fetchPokemons = async (): Promise<void> => {
 };
 
 const fetchPokemonDetails = async (pokemonList: PokemonRequestListResult[]): Promise<PokemonRequestDetail[]> => {
-  const results: PokemonRequestDetail[] = [];
-  const limit = 5; 
-  const queue: Promise<void>[] | any = [];
+  const requests = pokemonList.map(pokemon => axios.get<PokemonRequestDetail>(pokemon.url).then(response => response.data));
 
-  for (const pokemon of pokemonList) {
-    const request = axios.get<PokemonRequestDetail>(pokemon.url)
-      .then(response => results.push(response.data));
-
-    queue.push(request);
-
-    if (queue.length >= limit) {
-      await Promise.all(queue);
-      queue.length = 0;
-    }
-  }
-
-  await Promise.all(queue);
+  const results = await Promise.all(requests);
+  
   return results;
 };
 
