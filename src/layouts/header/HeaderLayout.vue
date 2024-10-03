@@ -92,7 +92,7 @@ import { useFilterStore } from "@/stores/filterStore";
 import { pokemonTypeData } from "@/utils/pokemon-type-data";
 import { useDarkMode } from "@/stores/darkModeStore";
 import { useRoute } from "vue-router";
-import { notify } from "@kyvg/vue3-notification";
+import { toast } from "vue3-toastify";
 const { currentTheme, isDarkMode } = toRefs(useDarkMode());
 const { isOpen } = useSidebar();
 
@@ -109,10 +109,9 @@ const onClearFilters = () => {
   selectedTypes.value = []
   localSearch.value = ''
   filterStore.clearFilters();
-  notify({
-      type: 'success',
-      text: 'Filters cleared successfully!'
-    });
+  toast('Filters cleared successfully!', {
+    type: 'success'
+  })
 }
 
 
@@ -120,10 +119,9 @@ const applyFilter = () => {
 
   filterStore.applyFilter(localSearch.value)
   filterStore.applyTypeFilter(selectedTypes.value)
-  notify({
-      type: 'success',
-      text: 'Filters applied successfully!',
-    });
+  toast('Filters applied successfully!', {
+    type: 'success'
+  })
 }
 </script>
 

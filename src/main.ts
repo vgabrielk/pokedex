@@ -9,7 +9,10 @@ import './css/globals.css';
 import DashboardLayout from './layouts/dashboard/DashboardLayout.vue';
 import EmptyLayout from './layouts/empty/EmptyLayout.vue';
 import Multiselect from 'vue-multiselect';
+import  createToast  from 'vue3-toastify';
+
 import './assets/tailwind.css';
+import "vue3-toastify/dist/index.css";
 
 
 
@@ -22,5 +25,13 @@ app.component('multi-select', Multiselect)
 app.use(router);
 app.use(Notifications)
 app.use(pinia);
-
+app.use(createToast, {
+    position: 'top-right', 
+    autoClose: 2000, 
+    hideProgressBar: false, 
+    closeOnClick: true, 
+    pauseOnHover: true, 
+    draggable: true, 
+    progress: undefined, 
+  });
 app.mount('#app');

@@ -49,9 +49,9 @@ import { computed, onMounted, onUnmounted, ref, toRefs, watch } from 'vue';
 import { pokeApiUrl } from '@/services/api';
 import { PokemonRequestDetail, PokemonRequestListResult } from '@/types/pokemon-request-types';
 import { getPokemonTypeImage } from '@/utils/pokemon-get-type-image';
-import { notify } from '@kyvg/vue3-notification';
 import { useFilterStore } from '@/stores/filterStore';
 import { useDarkMode } from '@/stores/darkModeStore';
+import { toast } from 'vue3-toastify';
 
 const { currentTheme } = toRefs(useDarkMode());
 
@@ -110,7 +110,7 @@ const fetchPokemons = async (): Promise<void> => {
     totalPages.value = Math.ceil(MAX_LIMIT / paginationLimit.value) || 1;
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || error.message || 'Erro ao carregar dados da API';
-    notify({ type: 'error', text: errorMessage });
+    toast(errorMessage, {type: 'error'})
   } finally {
     isLoading.value = false; 
   }

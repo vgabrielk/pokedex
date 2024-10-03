@@ -84,10 +84,10 @@ import { api, pokeApiUrl } from '@/services/api';
 import { PokemonRequestDetail } from '@/types/pokemon-request-types';
 import { getStatColor } from '@/utils/pokemon-get-stat-color';
 import { getPokemonTypeImage } from '@/utils/pokemon-get-type-image';
-import { notify } from '@kyvg/vue3-notification';
 import { getEvolutionImage } from '@/utils/pokemon-get-evolution-image';
 import { toRefs } from 'vue';
 import { useDarkMode } from '@/stores/darkModeStore';
+import { toast } from 'vue3-toastify';
 
 const {currentTheme, isDarkMode} = toRefs(useDarkMode());
 
@@ -121,10 +121,8 @@ const getPokemon = async () => {
         }
         const errorMessage = error.response?.data?.message || error.message || 'Erro ao carregar dados da API';
 
-        notify({
-            type: 'error',
-            text: errorMessage
-        });
+        toast(errorMessage, {type: 'error'})
+
     }
 };
 
