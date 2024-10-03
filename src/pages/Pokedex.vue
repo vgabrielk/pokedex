@@ -107,7 +107,7 @@ const fetchPokemons = async (): Promise<void> => {
     const pokemonDetails = await fetchPokemonDetails(pokemonList);
     pokemons.value = pokemonDetails;
 
-    totalPages.value = Math.ceil(pokemonDetails.length / paginationLimit.value);
+    totalPages.value = Math.ceil(MAX_LIMIT / paginationLimit.value) || 1;
   } catch (error: any) {
     const errorMessage = error.response?.data?.message || error.message || 'Erro ao carregar dados da API';
     notify({ type: 'error', text: errorMessage });
@@ -137,7 +137,7 @@ watch([() => filterStore.filterQuery, () => filterStore.selectedTypes], async ()
     const pokemonDetails = await fetchPokemonDetails(pokemonList);
     pokemons.value = pokemonDetails;
 
-    totalPages.value = Math.ceil(filteredPokemons.value.length / paginationLimit.value);
+    totalPages.value = Math.ceil(MAX_LIMIT / paginationLimit.value) || 1;
     currentPage.value = 1; 
   } else {
     fetchPokemons();
