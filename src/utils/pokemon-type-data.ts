@@ -4,62 +4,62 @@ export const pokemonTypeData: PokemonType[] = [
     {
         id: 'bug',
         image: '/pokemon-types/bug.svg',
-        name: 'Inseto'
+        name: 'Bug'
     },
     {
         id: 'dark',
         image: '/pokemon-types/dark.svg',
-        name: 'Noturno'
+        name: 'Dark'
     },
     {
         id: 'dragon',
         image: '/pokemon-types/dragon.svg',
-        name: 'Dragão'
+        name: 'Dragon'
     },
     {
         id: 'electric',
-        image: '/pokemon-types/eletric.svg',
-        name: 'Elétrico'
+        image: '/pokemon-types/electric.svg',
+        name: 'Electric'
     },
     {
         id: 'fairy',
         image: '/pokemon-types/fairy.svg',
-        name: 'Fada'
+        name: 'Fairy'
     },
     {
         id: 'fighting',
         image: '/pokemon-types/fighting.svg',
-        name: 'Lutador'
+        name: 'Fighting'
     },
     {
         id: 'fire',
         image: '/pokemon-types/fire.svg',
-        name: 'Fogo'
+        name: 'Fire'
     },
     {
         id: 'flying',
         image: '/pokemon-types/flying.svg',
-        name: 'Voador'
+        name: 'Flying'
     },
     {
         id: 'ghost',
         image: '/pokemon-types/ghost.svg',
-        name: 'Fantasma'
+        name: 'Ghost'
     },
     {
         id: 'grass',
         image: '/pokemon-types/grass.svg',
-        name: 'Grama'
+        name: 'Grass'
     },
     {
         id: 'ground',
         image: '/pokemon-types/ground.svg',
-        name: 'Terrestre'
+        name: 'Ground'
     },
     {
         id: 'ice',
         image: '/pokemon-types/ice.svg',
-        name: 'Gelo'
+        name: 'Ice'
     },
     {
         id: 'normal',
@@ -69,26 +69,26 @@ export const pokemonTypeData: PokemonType[] = [
     {
         id: 'poison',
         image: '/pokemon-types/poison.svg',
-        name: 'Venenoso'
+        name: 'Poison'
     },
     {
         id: 'psychic',
         image: '/pokemon-types/psychic.svg',
-        name: 'Psíquico'
+        name: 'Psychic'
     },
     {
         id: 'rock',
         image: '/pokemon-types/rock.svg',
-        name: 'Pedra'
+        name: 'Rock'
     },
     {
         id: 'steel',
         image: '/pokemon-types/steel.svg',
-        name: 'Metálico'
+        name: 'Steel'
     },
     {
         id: 'water',
         image: '/pokemon-types/water.svg',
-        name: 'Água'
+        name: 'Water'
     },
 ];
