@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { useSidebar } from '@/composables/useSidebar';
 import { useDarkMode } from '@/stores/darkModeStore';
-import { ref, toRefs } from 'vue'
+import { ref, toRefs, watch } from 'vue'
 import { useRoute } from 'vue-router';
 
 
@@ -85,4 +85,11 @@ const inactiveClass = ref(
     'border-gray-300 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100',currentTheme
 ]
 )
+
+watch(
+  () => route.name,
+  (newName, oldName) => {
+    isOpen.value = false
+}
+);
 </script>
